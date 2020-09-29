@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <style >
+        .done {
+       
+            width:150px;
+            text-decoration : line-through;
+
+        }
+    </style>
+</head>
+<body>
+    <main id="app">
+        <h3>{{title}}</h3>
+        <form @submit.prevent=" addTodo">
+            <label for="newTodo">New To Do List </label>
+            <input v-model="newTodo" type="text" name="newTodo">
+            <button type="submit" name="button" class="w3-button w3-black w3-round-large">Add</button>
+        </form>
+        <button @click="allDone"type="button" name="button" class="w3-button w3-black w3-round-large">All Done</button>
+        <ul>
+            <li v-for="todo in todos">
+                <input type="checkbox" v-model="todo.done">
+                <span :class="{ done: todo.done}">{{todo.title}}</span>
+                <button @click="removeTodo(todo)" type="button" name="button" class="w3-button w3-black w3-round-large">Remove</button>
+
+            </li>
+        </ul>
+
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="app.js" charset="utf-8"></script>
+    
+</body>
+</html>
